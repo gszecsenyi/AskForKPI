@@ -1,0 +1,8 @@
+langchain
+langgraph
+openai
+langchain_openai
+langchain_ollama
+llama_index
+llama-index-llms-ollama
+llama-index-utils-workflow
