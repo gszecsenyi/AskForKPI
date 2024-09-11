@@ -6,5 +6,5 @@ This is a dimensional design project, where a user handover the current database
 ## Sample output
 
 
-![Image](img/2024-09-11_20-52-29.jpeg)
-![Image](img/2024-09-11_20-52-29.jpeg)
+![Image](img/2024-09-11_20.52.29.jpeg)
+![Image](img/2024-09-11_20.52.36.jpeg)
