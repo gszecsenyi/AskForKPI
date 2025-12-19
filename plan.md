@@ -1,346 +1,634 @@
 # AskForKPI Startup Plan
+## Databricks Marketplace-First Strategy
 
-## Strategic Product Plan for AskForKPI
+---
+
+## Executive Summary
+
+**AskForKPI** is an AI-powered dimensional modeling assistant built as a **Databricks Native App** to help data teams design and deploy KPIs in minutes instead of weeks. By launching exclusively through Databricks Marketplace, we gain immediate access to 10,000+ enterprise customers with built-in distribution, trust, and higher willingness to pay.
+
+**Key Differentiator**: The only AI-native dimensional modeling tool built specifically for Databricks, leveraging Unity Catalog, Delta Lake, and the lakehouse architecture.
 
 ---
 
 ### **1. VALUE PROPOSITION**
 
 **Core Problem You Solve:**
-- Dimensional modeling requires expensive data warehouse experts ($150-300/hr)
-- Creating KPIs and data models takes weeks, blocking business decisions
-- Junior analysts lack expertise in Kimball methodology
-- Teams waste time on boilerplate table creation and schema design
+- Databricks customers struggle with dimensional modeling despite having powerful infrastructure
+- Data engineers spend 40-60% of time on repetitive KPI requests
+- Junior analysts can't leverage Databricks without SQL/modeling expertise
+- Enterprise teams waste $50k-200k annually on consultant-led dimensional design
 
 **Your Solution:**
-AI-powered dimensional modeling assistant that reduces weeks of work to minutes, making enterprise-grade data modeling accessible to anyone.
+AI-powered dimensional modeling assistant that works natively inside Databricks, automatically generating Unity Catalog tables, Delta tables, and production-ready SQL—reducing weeks of work to minutes.
+
+**Why Databricks Customers Need This:**
+1. **Already paying $100k-$2M+ for Databricks** → small incremental cost
+2. **Unity Catalog adoption** → need tools to organize data properly
+3. **Business analyst enablement** → democratize data modeling
+4. **ROI on lakehouse investment** → faster time-to-insight
+5. **Compliance & governance** → enforce modeling best practices
 
 ---
 
 ### **2. TARGET MARKET & CUSTOMERS**
 
-**Primary Segments:**
+**Primary Segments (All Databricks Customers):**
 
-1. **Analytics Engineers** (B2B SaaS companies)
-   - Pain: Overwhelmed with KPI requests from business teams
-   - Willingness to pay: High ($500-2000/month)
+1. **Enterprise Data Teams** (Fortune 500)
+   - 10-100 data engineers overwhelmed with requests
+   - Willing to pay: **$20k-100k/year**
+   - Example: Retail, financial services, healthcare
 
-2. **Business Analysts** (Fortune 1000)
-   - Pain: Dependent on data engineers, slow turnaround
-   - Willingness to pay: Medium ($200-800/month per seat)
+2. **Mid-Market SaaS Companies** (Series B-D)
+   - 3-10 person data teams
+   - Willing to pay: **$10k-30k/year**
+   - Example: Product analytics, B2B platforms
 
-3. **Data Consultancies**
-   - Pain: Repetitive client work, margin pressure
-   - Willingness to pay: Very high ($5000-20000/month)
+3. **Data Consultancies** (Databricks Partners)
+   - Repetitive client implementations
+   - Willing to pay: **$50k-200k/year** (multi-client licenses)
+   - Example: System integrators, analytics boutiques
 
 **Market Size:**
-- 50,000+ companies using Databricks/Snowflake
-- Growing data mesh adoption = decentralized modeling needs
-- Estimated TAM: $500M+ annually
+- **10,000+ Databricks customers** globally
+- **Average Databricks spend**: $250k-$2M annually
+- **Our target**: 0.5-2% of Databricks spend = **$5k-40k per customer**
+- **TAM**: $50M-400M (depending on penetration)
+- **SAM (realistic 3-year)**: $100M
+
+**Why This Market:**
+- High willingness to pay (already spending big on Databricks)
+- Trusted distribution channel (Marketplace)
+- Lower CAC (~$2k vs $8k for standalone SaaS)
+- Faster sales cycles (existing Databricks relationship)
+- Built-in compliance & security (runs in their environment)
 
 ---
 
 ### **3. PRODUCT ROADMAP**
 
-#### **Phase 1: MVP (3 months)**
+#### **Phase 1: Databricks Native App MVP (3 months)**
 ```
-Current: Python CLI
-→ Add: Web UI + Authentication
-→ Add: Database persistence
-→ Add: Real database connections (Postgres, Snowflake, Databricks)
-→ Add: SQL DDL generation (not just schema design)
+✓ Databricks-native UI (embedded in workspace)
+✓ Unity Catalog integration (read schemas, write tables)
+✓ LangGraph agent with Databricks-aware tools
+✓ Delta Lake table generation (stage, dimension, fact)
+✓ SQL Warehouse execution
+✓ Databricks authentication (OAuth + PAT)
+✓ Basic chat interface for KPI requests
 ```
+
+**Key Features:**
+- Runs entirely within Databricks workspace
+- Uses customer's own compute (SQL Warehouse)
+- All data stays in their Unity Catalog
+- No external data movement (security++)
 
 **Tech Stack:**
-- Frontend: React + Tailwind
-- Backend: FastAPI + LangGraph
-- Database: PostgreSQL (metadata) + Redis (sessions)
-- Deployment: Docker + AWS/GCP
+- **Backend**: Python FastAPI running on Databricks App Service
+- **Frontend**: React embedded in Databricks UI
+- **Database**: Unity Catalog (customer's metastore)
+- **Compute**: Customer's SQL Warehouse
+- **LLM**: OpenAI GPT-4o-mini (API calls only)
 
-#### **Phase 2: Platform Features (Months 4-6)**
+#### **Phase 2: Advanced Analytics Features (Months 4-6)**
 ```
-✓ Team collaboration (share designs, review workflows)
-✓ Version control for data models
-✓ Integration with dbt (auto-generate dbt models)
-✓ Data lineage visualization
-✓ Cost estimation (query cost predictions)
-✓ Git sync (commit schemas to repositories)
-```
-
-#### **Phase 3: Enterprise (Months 7-12)**
-```
-✓ SSO/SAML authentication
-✓ Role-based access control
-✓ Audit logs & compliance
-✓ Private LLM deployment (for sensitive schemas)
-✓ Custom modeling methodologies (beyond Kimball)
-✓ API access for automation
+✓ dbt integration (auto-generate dbt models)
+✓ Data lineage visualization (Unity Catalog lineage API)
+✓ Query performance optimization suggestions
+✓ Cost estimation (based on compute usage)
+✓ Automated data quality tests
+✓ Workflow orchestration (create Databricks Jobs)
 ```
 
-#### **Phase 4: Marketplace Strategy**
+#### **Phase 3: Enterprise & Governance (Months 7-9)**
 ```
-✓ Databricks Marketplace listing
-✓ Snowflake Native App
-✓ AWS Marketplace
-✓ Salesforce AppExchange integration
+✓ Fine-grained access control (Unity Catalog permissions)
+✓ Audit logging and compliance reports
+✓ Custom modeling templates (industry-specific)
+✓ Multi-workspace deployment
+✓ Private model deployment (customer's VPC)
+✓ SSO integration (Databricks identity)
+```
+
+#### **Phase 4: Ecosystem & AI Enhancements (Months 10-12)**
+```
+✓ ML feature store integration
+✓ Automated KPI forecasting (ML models)
+✓ Natural language querying (SQL generation)
+✓ Slack/Teams bot integration
+✓ API for programmatic access
+✓ Marketplace co-selling with Databricks
 ```
 
 ---
 
-### **4. BUSINESS MODEL**
+### **4. DATABRICKS MARKETPLACE STRATEGY**
 
-**Pricing Tiers:**
+#### **Why Databricks Marketplace First?**
 
-| Tier | Price | Target | Features |
-|------|-------|--------|----------|
-| **Starter** | $49/user/mo | Individual analysts | Basic KPI design, 5 projects |
-| **Professional** | $199/user/mo | Small teams (5-20) | Unlimited projects, dbt integration, Slack |
-| **Team** | $499/user/mo | Enterprise teams | SSO, audit logs, priority support |
-| **Enterprise** | Custom | Fortune 500 | Private deployment, SLA, custom training |
+| Factor | Standalone SaaS | Databricks Marketplace |
+|--------|----------------|------------------------|
+| **Distribution** | Cold outreach, ads | Built-in discovery, trusted |
+| **CAC** | $5k-10k | $1k-3k |
+| **ACV** | $2k-5k | $10k-50k |
+| **Sales Cycle** | 3-6 months | 1-2 months |
+| **Security Approval** | 6-12 months | 1-2 weeks (pre-approved) |
+| **Trust** | Unknown vendor | Databricks-vetted |
+| **Data Residency** | External SaaS | Customer's VPC |
+| **Time to First Value** | Days/weeks | Minutes |
 
-**Additional Revenue Streams:**
-- **Consulting Services**: Implementation help ($10k-50k projects)
-- **Training**: Dimensional modeling workshops ($2k per seat)
-- **Marketplace Commissions**: 20-30% from Databricks/Snowflake listings
+**Databricks Marketplace Benefits:**
+1. **Immediate Credibility**: Vetted by Databricks
+2. **Zero Cold Start**: 10,000 potential customers
+3. **Co-Marketing**: Featured in Databricks newsletters, events
+4. **Partner Connect**: Direct integration with sales team
+5. **Consumption-Based Billing**: Easy procurement
+6. **Unified Billing**: Rolls into Databricks invoice
 
-**Unit Economics Example:**
-- CAC: $800 (PLG motion + content marketing)
-- LTV: $7,200 (3-year retention at $200/mo avg)
-- LTV:CAC = 9:1 (excellent for SaaS)
+#### **Databricks Partner Program Requirements**
 
----
+**To Get Listed:**
+- [ ] Apply to Databricks Technology Partner Program
+- [ ] Build on Databricks App Framework
+- [ ] Security review (SOC2, penetration test)
+- [ ] Unity Catalog integration
+- [ ] Demo to Databricks Partner Engineering
+- [ ] Co-marketing materials (case studies, videos)
+- [ ] Support SLA commitment
 
-### **5. GO-TO-MARKET STRATEGY**
-
-#### **Distribution Channels:**
-
-1. **Product-Led Growth (Primary)**
-   - Free tier: 3 projects, community support
-   - Self-serve signup → activation within 5 minutes
-   - Viral loop: Share designs with colleagues
-
-2. **Content Marketing**
-   - Blog: "Dimensional Modeling Best Practices"
-   - YouTube tutorials on Kimball methodology
-   - Open-source tools/templates
-   - SEO for "dimensional modeling", "star schema generator"
-
-3. **Community Building**
-   - Discord/Slack community for data modelers
-   - Weekly office hours with experts
-   - User-contributed templates library
-
-4. **Partner Ecosystem**
-   - Databricks partner program
-   - Snowflake integration partnerships
-   - dbt Labs collaboration
-   - Data consultancies (reseller program)
-
-5. **Enterprise Sales**
-   - Hire 2-3 AEs after $500k ARR
-   - Target: VP Analytics, Chief Data Officers
-   - Pilot programs at Fortune 1000
+**Timeline to Marketplace:**
+- Month 1-3: Build MVP
+- Month 3: Submit to Partner Program
+- Month 4: Security review + testing
+- Month 5: Marketplace listing goes live
+- Month 6: Co-marketing launch
 
 ---
 
-### **6. COMPETITIVE ADVANTAGES**
+### **5. BUSINESS MODEL**
 
-**Your Moat:**
+#### **Pricing Strategy (Databricks Marketplace)**
 
-1. **AI-First Approach**: Others are manual GUI tools
-2. **Conversational UX**: Natural language vs drag-and-drop complexity
-3. **Best Practices Built-In**: Enforces Kimball methodology automatically
-4. **End-to-End Workflow**: Design → DDL → dbt → Documentation
-5. **Integration Depth**: Native apps in Databricks/Snowflake ecosystems
+**Consumption-Based Pricing (Preferred by Databricks):**
 
-**Competitors:**
-- **Traditional**: Erwin, ER/Studio (expensive, complex)
-- **Modern**: DBT (great for transformation, weak on design)
-- **Low-code**: Hex, Mode (analytics tools, not modeling)
-- **Your edge**: Only AI-native dimensional modeling platform
+| Tier | Price | Included | Target |
+|------|-------|----------|--------|
+| **Trial** | Free | 14 days, 10 tables | Evaluation |
+| **Starter** | $0.10/DBU consumed | Up to 5,000 DBU/month | Small teams (3-5 users) |
+| **Professional** | $0.08/DBU consumed | 5k-50k DBU/month | Mid-size teams (10-30 users) |
+| **Enterprise** | $0.06/DBU consumed | 50k+ DBU/month + dedicated support | Large orgs (50+ users) |
+
+**Alternative: Seat-Based Pricing (Easier to understand):**
+
+| Tier | Price/User/Month | Minimum | Features |
+|------|------------------|---------|----------|
+| **Team** | $199 | 5 users ($995/mo) | All core features, standard support |
+| **Enterprise** | $299 | 20 users ($5,980/mo) | Priority support, custom templates, SSO |
+| **Enterprise Plus** | Custom | 50+ users | Dedicated CSM, SLA, private deployment |
+
+**Recommended Approach: Hybrid**
+- Base subscription: $500/month (includes 5 users)
+- Additional users: $99/user/month
+- Compute consumption: Billed through Databricks (transparent)
+
+**Why This Works:**
+- Predictable base revenue
+- Aligns with Databricks consumption model
+- Easy procurement (rolls into existing Databricks contract)
+- Scales with customer growth
+
+#### **Revenue Projections**
+
+**Year 1 (Marketplace Launch):**
+- Q1-Q2: Build + get listed
+- Q3: 5 customers @ $10k/year avg = $12.5k MRR
+- Q4: 15 customers @ $15k/year avg = $56.25k MRR
+- **Year 1 ARR: $300k**
+
+**Year 2 (Scaling):**
+- Q1-Q4: 100 customers @ $20k/year avg
+- **Year 2 ARR: $2M**
+
+**Year 3 (Mature Product):**
+- 300 customers @ $30k/year avg
+- **Year 3 ARR: $9M**
+
+**Revenue Streams:**
+1. **Subscription Revenue** (85%): Marketplace fees
+2. **Professional Services** (10%): Implementation, custom templates
+3. **Training** (5%): Dimensional modeling workshops for customers
+
+**Unit Economics:**
+- **CAC**: $2,000 (low due to Marketplace)
+- **ACV**: $25,000 (avg across tiers)
+- **LTV**: $125,000 (5-year retention)
+- **LTV:CAC**: 62:1 (exceptional)
+- **Gross Margin**: 85% (SaaS + runs on customer compute)
+- **Magic Number**: 1.2+ (efficient growth)
 
 ---
 
-### **7. TECHNICAL ARCHITECTURE FOR SCALE**
+### **6. GO-TO-MARKET STRATEGY**
 
-**Current → Production:**
+#### **Phase 1: Databricks Ecosystem (Months 1-12)**
+
+**1. Partner Program Activation**
+- [ ] Join Databricks Technology Partner Program
+- [ ] Get "Built on Databricks" badge
+- [ ] Attend Databricks Partner Summit
+- [ ] Co-present at Data + AI Summit
+- [ ] Feature in Databricks Partner Newsletter
+
+**2. Marketplace Optimization**
+- [ ] Compelling listing with video demo
+- [ ] Customer case studies (3-5 early adopters)
+- [ ] Free trial with instant activation
+- [ ] Clear ROI calculator on listing page
+- [ ] SEO-optimized description for Marketplace search
+
+**3. Databricks Sales Co-Selling**
+- [ ] Train Databricks SEs (Solutions Engineers) on our product
+- [ ] Create battle cards for Databricks sales team
+- [ ] Offer referral incentives to Databricks reps
+- [ ] Join Databricks Partner Connect program
+- [ ] Get included in Unity Catalog migration pitches
+
+**4. Content Marketing (Databricks-Focused)**
+- [ ] Blog: "Dimensional Modeling Best Practices on Databricks"
+- [ ] YouTube: "Unity Catalog + Kimball Methodology"
+- [ ] Webinar: "From Raw Data to KPIs in 10 Minutes"
+- [ ] GitHub: Open-source Databricks notebooks for common patterns
+- [ ] LinkedIn: Thought leadership in Databricks community
+
+**5. Community Building**
+- [ ] Active in Databricks Community Forums
+- [ ] Databricks Slack channels engagement
+- [ ] Host "Office Hours" for Databricks users
+- [ ] Sponsor local Databricks user groups
+- [ ] Create Databricks certification prep content (build goodwill)
+
+**6. Event Strategy**
+- [ ] Data + AI Summit booth (primary event)
+- [ ] Databricks regional events
+- [ ] Co-host workshops with Databricks partners
+- [ ] Virtual lunch & learns with Databricks SEs
+
+#### **Phase 2: Expansion (Year 2+)**
+
+**1. Multi-Cloud Expansion**
+- Snowflake Native App (parallel strategy)
+- AWS Marketplace (for non-Databricks customers)
+- Google Cloud Marketplace
+
+**2. Direct Sales (After Marketplace Traction)**
+- Hire AEs focused on Databricks customers
+- Inside sales for mid-market
+- Partnerships with data consultancies
+
+---
+
+### **7. COMPETITIVE ADVANTAGES**
+
+**Why Competitors Can't Copy This:**
+
+1. **Databricks-Native Architecture**
+   - Built specifically for Unity Catalog, Delta Lake, SQL Warehouses
+   - Competitors would need to rebuild from scratch
+   - Deep integration takes 6-12 months to match
+
+2. **Marketplace First-Mover Advantage**
+   - Get listed and build reputation before competition
+   - Customer reviews and ratings create moat
+   - Databricks co-marketing locks in distribution
+
+3. **AI + Domain Expertise Combination**
+   - Not just AI (anyone can call OpenAI)
+   - Not just modeling tools (manual and slow)
+   - AI that understands Kimball + Databricks = unique
+
+4. **Data Stays in Customer Environment**
+   - Security and compliance advantage
+   - No external SaaS approval needed
+   - Faster enterprise adoption
+
+5. **Consumption-Based Model**
+   - Aligns with Databricks billing
+   - Lower friction than separate vendor
+   - Scales with customer usage
+
+**Competitive Landscape:**
+
+| Competitor | Strength | Weakness vs Us |
+|------------|----------|----------------|
+| **Traditional Tools** (Erwin, ER/Studio) | Established brand | Manual, expensive, not AI-native, no Databricks integration |
+| **dbt Labs** | Great for transformation | Weak on initial design, not conversational, requires SQL expertise |
+| **Databricks (if they build it)** | Platform owner | Not their core focus, slow to build, we're already there |
+| **Startups** (Continual, Preset) | VC-backed | Focus on different problems (metrics layer, BI), not dimensional design |
+
+**Our Edge:**
+- **Only** AI-powered dimensional modeling tool **built for** Databricks Marketplace
+- Speed to market (can launch in 3 months vs 12+ for competitors)
+- Tight integration with Databricks roadmap (Unity Catalog, AI/BI)
+
+---
+
+### **8. TECHNICAL ARCHITECTURE**
+
+#### **Databricks Native App Architecture**
 
 ```
-Current:
-[Python Script] → [Global Variables] → [OpenAI]
-
-Production:
-                    ┌─────────────┐
-                    │   Web UI    │
-                    │  (React)    │
-                    └──────┬──────┘
-                           │
-                    ┌──────▼──────┐
-                    │   API       │
-                    │  (FastAPI)  │
-                    └──────┬──────┘
-                           │
-        ┌──────────────────┼──────────────────┐
-        │                  │                  │
-   ┌────▼────┐      ┌─────▼─────┐     ┌─────▼─────┐
-   │ LangGraph│      │PostgreSQL │     │   Redis   │
-   │  Agent   │      │ (metadata)│     │ (sessions)│
-   └────┬────┘      └───────────┘     └───────────┘
-        │
-   ┌────▼────┐
-   │ Snowflake│
-   │ Databricks│
-   │ Postgres │
-   └─────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    Databricks Workspace                         │
+│                                                                  │
+│  ┌────────────────────────────────────────────────────────┐   │
+│  │              AskForKPI Native App                       │   │
+│  │                                                          │   │
+│  │  ┌──────────────┐         ┌──────────────┐            │   │
+│  │  │   React UI   │◄────────┤  FastAPI     │            │   │
+│  │  │ (Embedded)   │         │  Backend     │            │   │
+│  │  └──────────────┘         └──────┬───────┘            │   │
+│  │                                   │                     │   │
+│  └───────────────────────────────────┼─────────────────────┘   │
+│                                      │                          │
+│         ┌────────────────────────────┼────────────┐            │
+│         │                            │             │            │
+│         ▼                            ▼             ▼            │
+│  ┌──────────────┐          ┌──────────────┐  ┌──────────┐    │
+│  │Unity Catalog │          │SQL Warehouse │  │  Volumes │    │
+│  │              │          │              │  │ (Storage)│    │
+│  │ • Schemas    │          │ • Compute    │  │          │    │
+│  │ • Tables     │          │ • Execution  │  │ • Config │    │
+│  │ • Lineage    │          │ • Query Hist │  │ • State  │    │
+│  └──────────────┘          └──────────────┘  └──────────┘    │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              │ API Call Only
+                              ▼
+                    ┌──────────────────┐
+                    │   OpenAI API     │
+                    │  (GPT-4o-mini)   │
+                    └──────────────────┘
 ```
 
-**Key Changes Needed:**
-1. Replace global variables with PostgreSQL
-2. Multi-tenancy (workspace isolation)
-3. Background job queue (Celery/RQ) for long operations
-4. Caching layer (Redis) for schema metadata
-5. Real database connectors (SQLAlchemy + dialect-specific)
+**Key Architectural Decisions:**
+
+1. **No External Database**: Use Unity Catalog for all metadata
+2. **Customer's Compute**: All SQL runs on their SQL Warehouse
+3. **Embedded UI**: Lives inside Databricks workspace
+4. **Volumes for State**: Store conversation history, configs in Databricks Volumes
+5. **OAuth + PAT**: Use Databricks authentication (no separate auth)
+
+**Security & Compliance:**
+- ✓ Data never leaves customer's Databricks account
+- ✓ Runs in customer's VPC/region
+- ✓ Uses customer's encryption keys
+- ✓ Audit logs in customer's Unity Catalog
+- ✓ SOC2 Type II certification
+- ✓ GDPR, HIPAA compliant (inherits from Databricks)
 
 ---
 
-### **8. FUNDRAISING STRATEGY**
+### **9. FUNDRAISING STRATEGY**
 
-**Bootstrap → Seed → Series A**
+#### **Revised Timeline (Marketplace-First)**
 
-**Year 1: Bootstrap ($0-100k ARR)**
-- Build MVP with co-founders
-- Get first 10 paying customers
-- Validate product-market fit
+**Year 1: Bootstrap → Early Revenue ($0-300k ARR)**
+- No fundraising needed initially
+- Build with 1-2 co-founders
+- Launch on Marketplace by Month 6
+- Get first 15-20 customers
+- Prove unit economics
 
-**Year 2: Seed Round ($500k-1M, at $5-8M valuation)**
-- Raise: $1-2M
-- Use: 2 engineers, 1 designer, 1 sales
-- Target: $500k ARR, 50 customers
-- Investors: Data-focused VCs (Amplify Partners, Work-Bench)
+**Year 2: Seed Round ($300k-$2M ARR, raise $2-3M at $10-15M valuation)**
+- **Raise**: $2-3M
+- **Investors**: Databricks-focused VCs (Amplify Partners, Work-Bench, Operator Collective)
+- **Use**: Hire 5-7 people (2 engineers, 1 PM, 1 sales, 1 CSM, 1 marketing)
+- **Goal**: 100 customers, $2M ARR
 
-**Year 3: Series A ($5M at $25-40M valuation)**
-- Raise: $8-12M
-- Use: Scale to 20 employees
-- Target: $3M ARR, 200+ customers
-- Expansion into enterprise
+**Year 3: Series A ($2M-$10M ARR, raise $10-15M at $40-60M valuation)**
+- **Raise**: $10-15M
+- **Lead**: Tier 1 enterprise SaaS investor (Bessemer, Battery, Iconiq)
+- **Use**: Scale to 30 employees, expand to Snowflake
+- **Goal**: 300 customers, $10M ARR
 
-**Pitch Deck Elements:**
-1. Problem: Data modeling bottleneck
-2. Solution: AI-powered design assistant
-3. Market: $500M+ TAM in modern data stack
-4. Traction: ARR growth, customer logos
-5. Team: Backgrounds in data engineering + AI
-6. Vision: Become standard for dimensional modeling
+**Alternative: Acquisition Target (Year 2-3)**
+- **Acquirers**: Databricks, dbt Labs, Tableau/Salesforce, Collibra
+- **Valuation**: $30M-80M (3-8x ARR)
+- **Rationale**: Strategic asset for data platform play
 
----
-
-### **9. TEAM COMPOSITION**
-
-**Founding Team (Year 1):**
-- CEO/CPO: Product vision, fundraising
-- CTO: Technical architecture, AI/ML
-- Head of Data: Domain expertise, customer success
-
-**First Hires (Months 6-12):**
-- Full-stack engineer (web app)
-- DevOps/Infrastructure engineer
-- Product designer (UX/UI)
-
-**Year 2 Hires:**
-- Sales engineer
-- Customer success manager
-- Content marketer
+**Pitch Deck Angles:**
+1. **Problem**: $50B spent annually on manual data modeling
+2. **Solution**: AI cuts time from weeks to minutes
+3. **Market**: 10,000 Databricks customers, $100M+ SAM
+4. **Traction**: Marketplace listing, 50 customers, $1M ARR
+5. **Team**: Databricks early employees, data modeling experts
+6. **Unit Economics**: LTV:CAC = 62:1, 85% gross margin
+7. **Vision**: AI-powered data catalog + modeling for all platforms
 
 ---
 
-### **10. RISKS & MITIGATION**
+### **10. TEAM COMPOSITION**
+
+#### **Founding Team (Critical Hires)**
+
+**Must-Have Skills:**
+- ✅ **Databricks Expertise**: Former Databricks employee or certified architect
+- ✅ **Data Modeling**: Deep Kimball methodology knowledge
+- ✅ **AI/ML Engineering**: LangChain, LangGraph, LLM applications
+- ✅ **Product**: Built B2B SaaS products before
+- ✅ **Sales**: Sold to enterprise data teams
+
+**Ideal Founding Team (3 people):**
+
+1. **CEO/CPO** (You?)
+   - Product vision
+   - Fundraising
+   - Databricks partner relationships
+   - Background: PM at data company or consultant
+
+2. **CTO**
+   - Python, FastAPI, React
+   - LangGraph/LangChain expert
+   - Databricks certified architect
+   - Background: Ex-Databricks engineer or early Databricks customer
+
+3. **Head of Sales/GTM**
+   - Enterprise SaaS sales experience
+   - Databricks partner network
+   - Data + AI Summit regular
+   - Background: AE/SE at data infrastructure company
+
+#### **First 5 Hires (Months 6-12)**
+
+1. **Senior Full-Stack Engineer** (Month 6)
+   - Python + React expert
+   - Build Databricks app framework
+   - Salary: $150k-180k + 0.5-1% equity
+
+2. **Solutions Engineer** (Month 8)
+   - Customer demos and POCs
+   - Technical pre-sales
+   - Ex-Databricks SE ideal
+   - Salary: $120k-150k + commission
+
+3. **Customer Success Manager** (Month 9)
+   - Onboarding and retention
+   - Expansion revenue
+   - Data background required
+   - Salary: $100k-130k + commission
+
+4. **Product Designer** (Month 10)
+   - UI/UX for embedded Databricks app
+   - Familiar with data tools
+   - Salary: $120k-150k + equity
+
+5. **Data Engineer / ML Engineer** (Month 12)
+   - Improve AI agent quality
+   - Customer-specific optimizations
+   - Salary: $140k-170k + equity
+
+---
+
+### **11. RISKS & MITIGATION**
 
 | Risk | Probability | Impact | Mitigation |
 |------|------------|--------|------------|
-| **LLM costs too high** | Medium | High | Hybrid approach: rules engine + LLM, Ollama fallback |
-| **Database vendors build this** | Low | High | Move fast, become standard, deep integration moat |
-| **Poor model quality** | Medium | Critical | Human-in-loop review, feedback loops, model fine-tuning |
-| **Slow customer adoption** | Medium | High | Free tier, content marketing, community building |
-| **Competition from dbt** | Low | Medium | Partnership/integration strategy, different use case |
+| **Databricks builds this internally** | Low (18 months) | Critical | Move fast, get customers, become standard, acquisition target |
+| **Marketplace approval delayed** | Medium | High | Start application early, hire ex-Databricks employee for inside track |
+| **LLM costs too high** | Medium | High | Cache aggressively, use GPT-4o-mini, offer bring-your-own-key option |
+| **Security review fails** | Low | Critical | Hire security consultant, SOC2 from day 1, penetration testing |
+| **Low Marketplace discovery** | Medium | High | Co-marketing with Databricks, Partner Connect, community building |
+| **Enterprise sales cycles** | Medium | Medium | PLG motion, self-serve trial, freemium for small teams |
+
+**Key De-Risking Actions:**
+1. **Hire ex-Databricks employee** (month 1) for insider knowledge
+2. **Get 5 design partners** (months 2-3) with LOIs before building
+3. **Apply to Partner Program early** (month 2) to understand requirements
+4. **Build security/compliance** from day 1, not as afterthought
+5. **Create escape hatch**: Standalone SaaS version if Marketplace fails
 
 ---
 
-### **11. IMMEDIATE NEXT STEPS (90-Day Plan)**
+### **12. SUCCESS METRICS & MILESTONES**
 
-**Week 1-4: Validation**
-- [ ] Interview 20 target customers (analytics engineers, data teams)
-- [ ] Validate pain points and willingness to pay
-- [ ] Create landing page + waitlist
-- [ ] Set up analytics (Mixpanel/Amplitude)
+#### **Month 3: MVP Ready**
+- [ ] Databricks Native App functional
+- [ ] Unity Catalog integration working
+- [ ] Can generate and execute DDL
+- [ ] 3 design partner customers testing
 
-**Week 5-8: MVP Development**
-- [ ] Build web UI (React + FastAPI)
-- [ ] Add authentication (Auth0 or Clerk)
-- [ ] PostgreSQL backend (replace global variables)
-- [ ] Real database connection (start with Snowflake)
-- [ ] SQL DDL generation
+#### **Month 6: Marketplace Launch**
+- [ ] Listed on Databricks Marketplace
+- [ ] 10 paying customers
+- [ ] $10k MRR
+- [ ] 4.5+ star rating
+- [ ] Case study published
 
-**Week 9-12: Beta Launch**
-- [ ] Recruit 10 beta users from waitlist
-- [ ] Weekly user interviews
-- [ ] Iterate based on feedback
-- [ ] Pricing page + Stripe integration
-- [ ] Convert 3 beta users to paying
+#### **Month 12: Product-Market Fit**
+- [ ] 50 customers
+- [ ] $100k MRR ($1.2M ARR)
+- [ ] Net revenue retention > 110%
+- [ ] NPS > 50
+- [ ] Featured at Data + AI Summit
 
-**Success Metrics:**
-- 100 waitlist signups
-- 10 beta users actively using product
-- 3 paying customers ($147-597 MRR)
-- NPS > 40
+#### **Year 2: Scale**
+- [ ] 150 customers
+- [ ] $500k MRR ($6M ARR)
+- [ ] Seed funding closed
+- [ ] 15 employees
+- [ ] Snowflake Native App launched
 
----
-
-### **12. UNFAIR ADVANTAGES TO BUILD**
-
-1. **Data Modeling Knowledge Graph**
-   - Learn from every schema design
-   - Industry-specific templates (e-commerce, SaaS, fintech)
-   - Network effects: Better recommendations over time
-
-2. **Integration Ecosystem**
-   - First-mover in Databricks/Snowflake native apps
-   - Deepest dbt integration
-   - Certification programs
-
-3. **Community & Content**
-   - Become authority on dimensional modeling
-   - Free courses, certifications
-   - Open-source tools (freemium funnel)
+#### **Year 3: Market Leader**
+- [ ] 300+ customers
+- [ ] $1M MRR ($12M ARR)
+- [ ] Series A closed
+- [ ] #1 dimensional modeling tool for Databricks
+- [ ] Acquisition offers or IPO path
 
 ---
 
-## **RECOMMENDED STRATEGY**
+### **13. WHY THIS WILL WIN**
 
-**Start with "Databricks Native App" strategy:**
+**1. Perfect Timing**
+- Databricks is exploding (300%+ YoY growth)
+- Unity Catalog adoption accelerating
+- Data mesh = more teams doing modeling
+- AI tools becoming table stakes
 
-**Why:**
-- Databricks has 10,000+ enterprise customers
-- They pay big money ($100k-$1M+ annually)
-- Native app marketplace = built-in distribution
-- Your integration plan already mentions Databricks
+**2. Distribution Advantage**
+- Marketplace = 10,000 potential customers day 1
+- No cold outreach needed
+- Trusted by association with Databricks
+- Lower CAC = faster path to profitability
 
-**Path:**
-1. Build Databricks-specific version first (3 months)
-2. Apply to Databricks Partner Program
-3. Get listed in marketplace
-4. Use revenue to fund standalone SaaS version
-5. Expand to Snowflake, AWS
+**3. Technical Moat**
+- Deep Databricks integration takes competitors 12+ months
+- We'll have customer reviews, case studies, integrations
+- Network effects: Better models from more usage data
 
-**Advantages:**
-- Lower CAC (marketplace discovery)
-- Higher ACV ($5k-20k vs $2k-5k standalone)
-- Credibility boost
-- Faster path to revenue
+**4. Business Model Fit**
+- High ACV ($25k avg) = venture scalable
+- Low CAC ($2k) = capital efficient
+- 85% margins = profitable quickly
+- Consumption-based = scales with customers
 
-**Target Outcome:**
-This could be a $50-100M+ exit in 5-7 years, or a $500M+ company if you capture the market. The timing is perfect—AI + data modeling is a hot space, and the modern data stack is still evolving.
+**5. Team + Timing**
+- Right team with Databricks expertise
+- Right product for the market moment
+- Right distribution channel
+- Right business model
+
+**Bottom Line**: This is a **$100M-$500M opportunity** in 5-7 years. Databricks Marketplace is the fastest path to get there.
+
+---
+
+## IMMEDIATE NEXT STEPS (90 Days)
+
+### **Month 1: Foundation + Design Partners**
+
+**Week 1-2: Market Validation**
+- [ ] Interview 30 Databricks customers (data teams)
+- [ ] Identify 10 design partner candidates
+- [ ] Create pitch deck for design partners
+- [ ] Set up meetings with Databricks Partner team
+
+**Week 3-4: Technical Validation**
+- [ ] Build hello-world Databricks Native App
+- [ ] Test Unity Catalog API integrations
+- [ ] Prototype LangGraph agent with Databricks connectors
+- [ ] Validate security model
+
+### **Month 2: Build MVP**
+
+**Week 5-8: Core Development**
+- [ ] Build FastAPI backend for Databricks
+- [ ] Build React UI (embedded in Databricks)
+- [ ] Integrate LangGraph agent
+- [ ] Implement Unity Catalog read/write
+- [ ] Add SQL Warehouse execution
+- [ ] Create 5 demo KPI scenarios
+
+### **Month 3: Design Partner Beta**
+
+**Week 9-12: Testing & Iteration**
+- [ ] Deploy to 5 design partner workspaces
+- [ ] Weekly feedback sessions
+- [ ] Iterate on UX and features
+- [ ] Submit Marketplace application
+- [ ] Create demo video and case studies
+
+### **Success Criteria (Day 90):**
+- ✅ 5 design partners actively using
+- ✅ 50+ tables generated across customers
+- ✅ Marketplace application submitted
+- ✅ 3 LOIs (letters of intent) for paid pilots
+- ✅ Product demo gets "wow" reactions
 
 ---
 
 **Last Updated**: 2025-12-19
-**Version**: 1.0.0
+**Version**: 2.0.0 - Databricks Marketplace First
+**Status**: Ready for Execution
